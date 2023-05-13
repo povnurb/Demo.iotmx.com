@@ -25,7 +25,7 @@ const useMqttService = ()=>{
     })
     // publish
     const publish = ref({
-        topic: 'testtopic/home',
+        topic: 'v1/devices/lalo/ESPWROOM32A11B5AE04002/command',
         qos: 0,
         payload: '{ "msg": "Hello, I am IOTMX Broker" }' 
     })
@@ -224,19 +224,61 @@ const useMqttService = ()=>{
     }
 
     function processData(){
+        if(mensaje.device_serial==null){
+            document.getElementById('device_serial').innerHTML = ""
+        }else
         document.getElementById('device_serial').innerHTML = mensaje.device_serial;
+        if(mensaje.temp_cpu==null){
+            document.getElementById('temp_cpu').innerHTML = ""
+        }else
         document.getElementById('temp_cpu').innerHTML = mensaje.temp_cpu;
+        if(mensaje.tempC==null){
+            document.getElementById('tempC').innerHTML = ""
+        }else
         document.getElementById('tempC').innerHTML = mensaje.tempC;
+        if(mensaje.tmin==null){
+            document.getElementById('tmin').innerHTML = ""
+        }else
         document.getElementById('tmin').innerHTML = mensaje.tmin;
-        document.getElementById('tmax').innerHTML = mensaje.tmax;  
+        if(mensaje.tmax==null){
+            document.getElementById('tmax').innerHTML = ""
+        }else
+        document.getElementById('tmax').innerHTML = mensaje.tmax;
+        if(mensaje.humedad==null){
+            document.getElementById('humedad').innerHTML = ""
+        }else 
         document.getElementById('humedad').innerHTML = mensaje.humedad;
+        if(mensaje.ALARM_NAME1==null){
+            document.getElementById('ALARM_NAME1').innerHTML = ""
+        }else
         document.getElementById('ALARM_NAME1').innerHTML = mensaje.ALARM_NAME1;
+        if(mensaje.ALARM_NAME2==null){
+            document.getElementById('ALARM_NAME2').innerHTML = ""
+        }else
         document.getElementById('ALARM_NAME2').innerHTML = mensaje.ALARM_NAME2;
+        if(mensaje.ALARM_NAME3==null){
+            document.getElementById('ALARM_NAME3').innerHTML = ""
+        }else
         document.getElementById('ALARM_NAME3').innerHTML = mensaje.ALARM_NAME3;
+        if(mensaje.ALARM_NAME4==null){
+            document.getElementById('ALARM_NAME4').innerHTML = ""
+        }else
         document.getElementById('ALARM_NAME4').innerHTML = mensaje.ALARM_NAME4;
+        if(mensaje.ALARM_NAME5==null){
+            document.getElementById('ALARM_NAME5').innerHTML = ""
+        }else
         document.getElementById('ALARM_NAME5').innerHTML = mensaje.ALARM_NAME5;
+        if(mensaje.ALARM_NAME6==null){
+            document.getElementById('ALARM_NAME6').innerHTML = ""
+        }else
         document.getElementById('ALARM_NAME6').innerHTML = mensaje.ALARM_NAME6;
+        if(mensaje.ALARM_NAME7==null){
+            document.getElementById('ALARM_NAME7').innerHTML = ""
+        }else
         document.getElementById('ALARM_NAME7').innerHTML = mensaje.ALARM_NAME7;
+        if(mensaje.ALARM_NAME8==null){
+            document.getElementById('ALARM_NAME8').innerHTML = ""
+        }else
         document.getElementById('ALARM_NAME8').innerHTML = mensaje.ALARM_NAME8;
         document.getElementById('ALARM_TIMEON1').innerHTML = mensaje.ALARM_TIMEON1;
         document.getElementById('ALARM_TIMEON2').innerHTML = mensaje.ALARM_TIMEON2;
@@ -254,13 +296,37 @@ const useMqttService = ()=>{
         document.getElementById('ALARM_TIMEOFF6').innerHTML = mensaje.ALARM_TIMEOFF6;
         document.getElementById('ALARM_TIMEOFF7').innerHTML = mensaje.ALARM_TIMEOFF7;
         document.getElementById('ALARM_TIMEOFF8').innerHTML = mensaje.ALARM_TIMEOFF8;
+        if(mensaje.ALARM_CONT1==null){
+            document.getElementById('ALARM_CONT1').innerHTML = ""
+        }else
         document.getElementById('ALARM_CONT1').innerHTML = mensaje.ALARM_CONT1;
+        if(mensaje.ALARM_CONT2==null){
+            document.getElementById('ALARM_CONT2').innerHTML = ""
+        }else
         document.getElementById('ALARM_CONT2').innerHTML = mensaje.ALARM_CONT2;
+        if(mensaje.ALARM_CONT3==null){
+            document.getElementById('ALARM_CONT3').innerHTML = ""
+        }else
         document.getElementById('ALARM_CONT3').innerHTML = mensaje.ALARM_CONT3;
+        if(mensaje.ALARM_CONT4==null){
+            document.getElementById('ALARM_CONT4').innerHTML = ""
+        }else
         document.getElementById('ALARM_CONT4').innerHTML = mensaje.ALARM_CONT4;
+        if(mensaje.ALARM_CONT5==null){
+            document.getElementById('ALARM_CONT5').innerHTML = ""
+        }else
         document.getElementById('ALARM_CONT5').innerHTML = mensaje.ALARM_CONT5;
+        if(mensaje.ALARM_CONT6==null){
+            document.getElementById('ALARM_CONT6').innerHTML = ""
+        }else
         document.getElementById('ALARM_CONT6').innerHTML = mensaje.ALARM_CONT6;
+        if(mensaje.ALARM_CONT7==null){
+            document.getElementById('ALARM_CONT7').innerHTML = ""
+        }else
         document.getElementById('ALARM_CONT7').innerHTML = mensaje.ALARM_CONT7;
+        if(mensaje.ALARM_CONT8==null){
+            document.getElementById('ALARM_CONT8').innerHTML = ""
+        }else
         document.getElementById('ALARM_CONT8').innerHTML = mensaje.ALARM_CONT8;
 
         //ALARM_CONT

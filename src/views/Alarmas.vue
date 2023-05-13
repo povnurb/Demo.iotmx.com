@@ -309,6 +309,38 @@
 
                 <code>EL boton D34 activa las alarmas</code>
             </div>
+              
+    
+      <div class="container my-5">
+      <!-- Connection -->
+      <!--<div class="card">-->
+        <div class="row g-5">
+          <div class="col-md-12">
+              <a class="block block-rounded block-link-pop bg-xinspire-darker" href="javascript:void(0)">
+                  <div class="block-content block-content-full d-flex align-items-center justify-content-between">
+                      <div class="me-3">
+                      <p class="text-white text-uppercase fs-lg fw-semibold mb-0">
+                          Control ON - OFF
+                      </p>
+                      <p class="text-white-75 mb-0">
+                          Activa y Desactiva el puerto programado en sitio 
+                      </p>
+                      </div>
+                      <div class="item">
+                          <div class="form-check form-switch">
+                              <!--<input class="form-check-input" type="checkbox" v-model="action.RELAY_STATUS" @click="relayOnOff">-->
+                              <input class="form-check-input" type="checkbox" @click="relayOnOff33">
+                          </div>
+                      </div>
+                      <div class="item">
+                          <i :class="icon_class33"></i><!--"fa fa-3x fa-lightbulb text-warning"-->
+                      </div>
+                  </div>
+              </a>
+          </div>
+        </div>
+      <!--</div>-->
+      </div>
     </main>
 </template>
 
@@ -316,7 +348,8 @@
     
     // lo que este en la funcion useMqttService lo importara a este archivo
   import useMqttService from '@/composables/useMqttService';
-  
+  import { ref,computed } from 'vue'
+  //import { useToast } from 'vue-toastification'
   const {
     qosList,
     connection,
@@ -334,7 +367,35 @@
     doUnSubscribe,
     doPublish
     } = useMqttService()
-    
-    
+    //v1/devices/lalo/ESPWROOM32A11B5AE04002/command //topico
+    // {"protocol": "WS", "output": "RELAY D33", "value": false } //payload
+    const relayOnOff33 = ()=>{
+      // enviar dato de On Off por WS {"protocol": "WS", "output": "RELAY D33", "value": true }
+      command(`{"value": ${!action.value.RELAY_STATUS33} }`)
+      action.value.RELAY_STATUS33=!action.value.RELAY_STATUS33;
+    }
+    const icon_class33 = computed(() => {
+        return action.value.RELAY_STATUS33 ? "fa fa-3x fa-check text-warning" : "fa fa-3x fa-check text-black"
+    })
 
+    const command = (cmd) => {
+        client.value.publish(
+          "v1/devices/lalo/ESPWROOM32A11B5AE04002/command", 
+          cmd, 
+            0, 
+            (error)=>{
+                btnLoadingType.value = ""
+                if(error){
+                    console.log("publish error:", error);
+
+                    return
+                }
+                console.log(`published message: ${cmd}`)
+
+            }
+        )
+    }
+    const action = ref({
+            RELAY_STATUS33: false
+        })
 </script>
