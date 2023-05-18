@@ -241,7 +241,7 @@
                 <div class="block block-rounded h-100 mb-0">
                     <div class="block-header block-header-default">
                     
-                    <div class="text-center block-options">
+                    <div class="block-options">
                         <div class="fs-1 fw-bold"><span id="humedad"></span> %</div>
                         <div class="text-muted mb-3">Humedad Sala</div>
                     </div>
